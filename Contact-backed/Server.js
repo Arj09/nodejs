@@ -10,7 +10,12 @@ connectDb();
 const app = express();
 
 const port = process.env.PORT || 50001;
-app.use(cors())
+app.use(cors({
+    origin:["https://nodejs-mu.vercel.app/"],
+    methods:["POST","GET"],
+    credentials: true
+
+}))
 app.use(express.json());
 app.use('/api/contact', require('./routes/contactRoutes'));
 app.use(errorHandler);
